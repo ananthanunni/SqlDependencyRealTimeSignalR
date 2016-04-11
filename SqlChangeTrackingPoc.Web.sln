@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChangeTrackingPoc.Web", "SqlChangeTrackingPoc.Web\SqlChangeTrackingPoc.Web.csproj", "{648E2271-0E61-4638-9FE8-C446B80CD5C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChangeTrackingPoc.Repository", "SqlChangeTrackingPoc.Repository\SqlChangeTrackingPoc.Repository.csproj", "{F7A21254-8A00-4C3B-A6B3-7B82103430C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChangeTrackingPoc.Entity", "SqlChangeTrackingPoc.Entity\SqlChangeTrackingPoc.Entity.csproj", "{8D74635F-8E84-46DB-A6AF-F48ED78671EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChangeTrackingPoc.Service", "SqlChangeTrackingPoc.Service\SqlChangeTrackingPoc.Service.csproj", "{CE174E3B-0A34-491D-8158-7BBFC56DBAFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChangeTrackingPoc.Models", "SqlChangeTrackingPoc.Models\SqlChangeTrackingPoc.Models.csproj", "{A2D0D2F8-F09E-4AFC-9742-1EDD0DED05B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlChangeTrackingPoc.UoW", "SqlChangeTrackingPoc.UoW\SqlChangeTrackingPoc.UoW.csproj", "{5BDE72C8-F27B-41FB-A00F-E4D701B888E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{648E2271-0E61-4638-9FE8-C446B80CD5C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648E2271-0E61-4638-9FE8-C446B80CD5C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648E2271-0E61-4638-9FE8-C446B80CD5C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648E2271-0E61-4638-9FE8-C446B80CD5C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A21254-8A00-4C3B-A6B3-7B82103430C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A21254-8A00-4C3B-A6B3-7B82103430C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A21254-8A00-4C3B-A6B3-7B82103430C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A21254-8A00-4C3B-A6B3-7B82103430C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D74635F-8E84-46DB-A6AF-F48ED78671EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D74635F-8E84-46DB-A6AF-F48ED78671EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D74635F-8E84-46DB-A6AF-F48ED78671EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D74635F-8E84-46DB-A6AF-F48ED78671EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE174E3B-0A34-491D-8158-7BBFC56DBAFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE174E3B-0A34-491D-8158-7BBFC56DBAFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE174E3B-0A34-491D-8158-7BBFC56DBAFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE174E3B-0A34-491D-8158-7BBFC56DBAFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D0D2F8-F09E-4AFC-9742-1EDD0DED05B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D0D2F8-F09E-4AFC-9742-1EDD0DED05B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D0D2F8-F09E-4AFC-9742-1EDD0DED05B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D0D2F8-F09E-4AFC-9742-1EDD0DED05B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BDE72C8-F27B-41FB-A00F-E4D701B888E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BDE72C8-F27B-41FB-A00F-E4D701B888E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BDE72C8-F27B-41FB-A00F-E4D701B888E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BDE72C8-F27B-41FB-A00F-E4D701B888E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

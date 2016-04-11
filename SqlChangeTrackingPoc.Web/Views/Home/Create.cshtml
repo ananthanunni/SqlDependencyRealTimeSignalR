@@ -1,0 +1,29 @@
+﻿@model SqlChangeTrackingPoc.Models.DevTest.DevTestModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm(Model == null ? "Create" : "Update"))
+{
+    @Html.LabelFor(t => t.AffiliateName)
+    @Html.EditorFor(t => t.AffiliateName)
+    <br />
+    @Html.LabelFor(t => t.CampaignName)
+    @Html.EditorFor(t => t.CampaignName)
+    <br />
+    @Html.LabelFor(t => t.Clicks)
+    @Html.EditorFor(t => t.Clicks)
+    <br />
+    @Html.LabelFor(t => t.Conversions)
+    @Html.EditorFor(t => t.Conversions)
+    <br />
+    @Html.LabelFor(t => t.Date)
+    @Html.EditorFor(t => t.Date)
+    <br />
+    @Html.LabelFor(t => t.Impressions)
+    @Html.EditorFor(t => t.Impressions)
+
+    <input type="submit" value="Save" />
+}
