@@ -21,21 +21,9 @@ namespace SqlChangeTrackingPoc.Repository
         {
             _dbContext = dbContext;
 
-            _collection = _dbContext.Set<TEntity>();
-
-            if (registerDependecny)
-            {
-                SqlDependency.Start(_dbContext.Database.Connection.ConnectionString);
-                var dependency = new SqlDependency();
-                dependency.OnChange += Dependency_OnChange;
-            }
+            _collection = _dbContext.Set<TEntity>();            
         }
-
-        private void Dependency_OnChange(object sender, SqlNotificationEventArgs e)
-        {
-            Console.Write(e);
-        }
-
+       
         public void Add(TEntity newItem)
         {
             _collection.Add(newItem);

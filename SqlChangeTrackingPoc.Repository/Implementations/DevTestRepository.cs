@@ -13,7 +13,7 @@ namespace SqlChangeTrackingPoc.Repository
         public DevTestRepository(DbContext dbContext)
             :base(dbContext)
         {
-
         }
+
     }
 }

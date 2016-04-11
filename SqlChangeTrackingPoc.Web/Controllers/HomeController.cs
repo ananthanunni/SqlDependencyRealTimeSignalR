@@ -13,7 +13,20 @@ namespace SqlChangeTrackingPoc.Web.Controllers
         private DevTestService _service = null;
         public HomeController()
         {
-            _service = new DevTestService();
+            _service = DevTestService.Instance;
+
+            if (!_service.EventsSubscribed)
+            {
+                _service.OnChanged += (a, b) =>
+                {
+
+                };
+
+                _service.OnError += (a, b) =>
+                {
+
+                };
+            }
         }
         // GET: Home
         public ActionResult Index()
@@ -55,7 +68,7 @@ namespace SqlChangeTrackingPoc.Web.Controllers
         public ActionResult Edit(int id)
         {
             var item = _service.GetItem(id);
-            return View("Create",item);
+            return View("Create", item);
         }
 
         // POST: Home/Edit/5
