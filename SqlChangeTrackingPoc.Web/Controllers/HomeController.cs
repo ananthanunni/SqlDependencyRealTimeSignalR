@@ -17,7 +17,6 @@ namespace SqlChangeTrackingPoc.Web.Controllers
         public HomeController()
         {
             _service = DevTestService.Instance;
-            _hubContext = GlobalHost.ConnectionManager.GetHubContext<DbNotificationsHub>();
 
             if (!_service.EventsSubscribed)
             {
@@ -29,11 +28,13 @@ namespace SqlChangeTrackingPoc.Web.Controllers
 
         private void _service_OnError(object sender, TableDependency.EventArgs.ErrorEventArgs e)
         {
+            _hubContext = GlobalHost.ConnectionManager.GetHubContext<DbNotificationsHub>();
             _hubContext.Clients.All.RelayDbError(e);
         }
 
         private void _service_OnChanged(object sender, RecordChangedEventArgs<DevTestModel> e)
         {
+            _hubContext = GlobalHost.ConnectionManager.GetHubContext<DbNotificationsHub>();
             _hubContext.Clients.All.RelayDbChanges(e);
         }
 

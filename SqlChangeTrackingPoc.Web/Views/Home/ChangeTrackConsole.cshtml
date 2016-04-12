@@ -3,9 +3,9 @@
     ViewBag.Title = "ChangeTrackConsole";
 }
 
-<h2>Change Console</h2>
+<h2>Change Console <a target="_blank" href="~/Home/Index" class="btn btn-sm btn-primary">View Grid </a></h2>
 
-<textarea class="form-control" style="max-width:none;font-family:monospace" rows="24" readonly="readonly"></textarea>
+<textarea class="form-control" id="txtbLog" style="max-width:none;font-family:monospace" rows="24" readonly="readonly"></textarea>
 
 @section scripts{
     <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
@@ -13,20 +13,39 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var trackerHub = null;
-            $.connection.hub.start()
-            .done(function () {
-                trackerHub = $.connection.dbNotificationsHub;
+            var trackerHub = $.connection.dbNotificationsHub;
 
-                // register client methods
-                trackerHub.client.relayDbChanges = function (data) {
-                    debugger;
-                };
+            // register client methods
+            trackerHub.client.RelayDbChanges = function (data) {
+                displayUpdate(data);
+            };
 
-                trackerHub.client.relayDbError = function (data) {
-                    debugger;
-                };
+            trackerHub.client.RelayDbError = function (data) {
+                debugger;
+            };
+
+            trackerHub.connection.start()
+            .done(function (data) {
+                debugger;
+            })
+            .fail(function (data) {
+                debugger;
             });
         });
+
+        function displayUpdate(data) {
+            var eventType = {
+                0: 'None',
+                1: 'Delete',
+                2: 'Insert',
+                3: 'Update'
+            }
+
+            var message = '\nEVENT :' + eventType[data.ChangeType];
+            message += '\nRECORD : ' + JSON.stringify(data.Record);
+            message += '\n-------------------------------------------------------';
+
+            $('#txtbLog').append(message);
+        }
     </script>
 }
