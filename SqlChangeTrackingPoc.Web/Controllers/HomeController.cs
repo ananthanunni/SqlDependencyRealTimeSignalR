@@ -1,5 +1,7 @@
-﻿using SqlChangeTrackingPoc.Models.DevTest;
+﻿using Microsoft.AspNet.SignalR;
+using SqlChangeTrackingPoc.Models.DevTest;
 using SqlChangeTrackingPoc.Service;
+using SqlChangeTrackingPoc.Web.Hubs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,23 +13,30 @@ namespace SqlChangeTrackingPoc.Web.Controllers
     public class HomeController : Controller
     {
         private DevTestService _service = null;
+        private IHubContext _hubContext = null;
         public HomeController()
         {
             _service = DevTestService.Instance;
+            _hubContext = GlobalHost.ConnectionManager.GetHubContext<DbNotificationsHub>();
 
             if (!_service.EventsSubscribed)
             {
-                _service.OnChanged += (a, b) =>
-                {
+                _service.OnChanged += _service_OnChanged;
 
-                };
-
-                _service.OnError += (a, b) =>
-                {
-
-                };
+                _service.OnError += _service_OnError;
             }
         }
+
+        private void _service_OnError(object sender, TableDependency.EventArgs.ErrorEventArgs e)
+        {
+            _hubContext.Clients.All.RelayDbError(e);
+        }
+
+        private void _service_OnChanged(object sender, RecordChangedEventArgs<DevTestModel> e)
+        {
+            _hubContext.Clients.All.RelayDbChanges(e);
+        }
+
         // GET: Home
         public ActionResult Index()
         {
@@ -93,6 +102,11 @@ namespace SqlChangeTrackingPoc.Web.Controllers
         {
             _service.Delete(id);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ChangeTrackConsole()
+        {
+            return View();
         }
     }
 }

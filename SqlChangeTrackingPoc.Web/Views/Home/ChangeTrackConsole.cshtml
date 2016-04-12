@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "ChangeTrackConsole";
+}
+
+<h2>Change Console</h2>
+
+<textarea class="form-control" style="max-width:none;font-family:monospace" rows="24" readonly="readonly"></textarea>
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr/hubs" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var trackerHub = null;
+            $.connection.hub.start()
+            .done(function () {
+                trackerHub = $.connection.dbNotificationsHub;
+
+                // register client methods
+                trackerHub.client.relayDbChanges = function (data) {
+                    debugger;
+                };
+
+                trackerHub.client.relayDbError = function (data) {
+                    debugger;
+                };
+            });
+        });
+    </script>
+}
