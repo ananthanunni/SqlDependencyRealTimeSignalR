@@ -33,6 +33,8 @@ namespace SqlChangeTrackingPoc.Service
             var dbContext = new SqlChangeTrackingPocDbContext();
             _uow = new UnitOfWork(dbContext);
 
+            dbContext.Database.CreateIfNotExists();
+
             _devTestRepository = _uow.DevTestRepository;
 
             _dependencyTracker = new BaseDependencyTracker<DevTest>(dbContext.Database.Connection.ConnectionString, "DevTest");
