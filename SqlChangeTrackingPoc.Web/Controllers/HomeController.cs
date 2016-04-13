@@ -41,8 +41,15 @@ namespace SqlChangeTrackingPoc.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            //var items = _service.GetAllDevTests();
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult GetDevTestList()
+        {
             var items = _service.GetAllDevTests();
-            return View(items);
+            return Json(items,JsonRequestBehavior.AllowGet);
         }
 
         //// GET: Home/Details/5
@@ -102,7 +109,8 @@ namespace SqlChangeTrackingPoc.Web.Controllers
         public ActionResult Delete(int id)
         {
             _service.Delete(id);
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
+            return Json(true,JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ChangeTrackConsole()

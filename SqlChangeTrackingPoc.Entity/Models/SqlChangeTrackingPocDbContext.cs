@@ -21,6 +21,7 @@ namespace SqlChangeTrackingPoc.Entity.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new DevTestMap());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

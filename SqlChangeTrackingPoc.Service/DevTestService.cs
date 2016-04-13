@@ -31,11 +31,11 @@ namespace SqlChangeTrackingPoc.Service
             // TODO: Make interface and do DI
             _mapper = new DevTestMapper();
             var dbContext = new SqlChangeTrackingPocDbContext();
-            _uow = new UnitOfWork(dbContext);
+            _uow = new UnitOfWork(dbContext);    
+            
+            _devTestRepository = _uow.DevTestRepository;
 
             dbContext.Database.CreateIfNotExists();
-
-            _devTestRepository = _uow.DevTestRepository;
 
             _dependencyTracker = new BaseDependencyTracker<DevTest>(dbContext.Database.Connection.ConnectionString, "DevTest");
 
