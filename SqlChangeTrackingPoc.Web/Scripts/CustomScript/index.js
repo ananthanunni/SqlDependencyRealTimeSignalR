@@ -38,8 +38,12 @@ function GridViewModel() {
         if (dateInfo == null || dateInfo == '')
             return '';
 
-        var dateValue = parseInt(dateInfo.match(/\d+/ig));
-        return (new Date(dateValue)).toDateString();
+        if (dateInfo.match(/Date\(/) != null) {
+            var dateValue = parseInt(dateInfo.match(/\d+/ig));
+            return (new Date(dateValue)).toISOString();
+        }
+
+        return dateInfo;
     }
 
     self.updateItem = function (id, item) {
