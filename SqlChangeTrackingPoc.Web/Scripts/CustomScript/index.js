@@ -14,7 +14,12 @@ function GridViewModel() {
     }
 
     self.addItem = function (item) {
-        self.listData.push(item);
+        var currentItem = ko.utils.arrayFirst(self.listData(), function (data) {
+            return data.ID == item.ID;
+        });
+
+        if (currentItem == null)
+            self.listData.push(item);
     }
 
     self.removeItem = function (id) {
@@ -23,7 +28,7 @@ function GridViewModel() {
         });
     }
 
-    self.doAjaxDelete = function (data,clickData) {        
+    self.doAjaxDelete = function (data, clickData) {
         $.get('Home/Delete/' + data.ID, function () {
             console.log('doAjaxDelete callback invoked.');
         });
@@ -33,7 +38,7 @@ function GridViewModel() {
         if (dateInfo == null || dateInfo == '')
             return '';
 
-        var dateValue=parseInt(dateInfo.match(/\d+/ig));
+        var dateValue = parseInt(dateInfo.match(/\d+/ig));
         return (new Date(dateValue)).toDateString();
     }
 
